@@ -3,5 +3,6 @@ export type response = {
     name: string,
     description?: string,
     stargazers_count: number,
-    html_url: string
+    html_url: string,
+    languages_url: string,
 }

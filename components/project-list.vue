@@ -10,7 +10,7 @@
               <div class="font-semibold">{{ item.name }}</div>
               <div>{{ item.stargazers_count }}★</div>
             </div>
-            <p class="text-sm mt-3">{{ item.description }}</p>
+            <p class="text-sm mt-3">{{ item.description }}</p> 
           </a>
         </li>
 
@@ -30,10 +30,17 @@ const repos = computed(
 )
 
 
+const getLanguage = async() => {
+  const languages = []
+  for(const item of data.value as response[]){
+    const {data: response} = await useFetch<response[]>(`https://api.github.com/repos/Shakhboz06/${item.name}/languages`)
+    languages.push(response)
+  }
+  return languages
+}
 
-
-
-
+await getLanguage()
+console.log(await getLanguage())
 </script>
 
 <style></style>
