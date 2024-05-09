@@ -29,18 +29,6 @@ const repos = computed(
   () => (data.value as response[])?.sort((a, b) => b.stargazers_count - a.stargazers_count)
 )
 
-
-const getLanguage = async() => {
-  const languages = []
-  for(const item of data.value as response[]){
-    const {data: response} = await useFetch<response[]>(`https://api.github.com/repos/Shakhboz06/${item.name}/languages`)
-    languages.push(response)
-  }
-  return languages
-}
-
-await getLanguage()
-console.log(await getLanguage())
 </script>
 
 <style></style>
